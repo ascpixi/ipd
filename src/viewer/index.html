@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Club Iterated Prisoner's Dillema result viewer</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div id="root">
+      <header>
+        <img
+          src="https://assets.hackclub.com/flag-standalone-wtransparent.svg"
+          width="68" height="24" alt="Hack Club logo"
+        />
+
+        <span>Hack Club IPD viewer</span>
+        <button id="btn-open-results">Open results file...</button>
+      </header>
+
+      <main>
+        <section id="leaderboard">
+          <table>
+            <thead>
+              <th>Rank</th>
+              <th>Solution</th>
+              <th>Score (avg)</th>
+            </thead>
+  
+            <tbody id="leaderboard-entries"></tbody>
+          </table>
+        </section>
+  
+        <section id="matchups">
+          <div id="matchup-header">
+            <div><b>Match-ups</b></div>
+
+            <div>
+              <input type="checkbox" id="should-filter">
+
+              <label for="matchup-filter">Filter by:</label>
+              <select disabled id="matchup-filter">
+                <option>(no file loaded)</option>
+              </select>
+            </div>
+          </div>
+  
+          <div id="matchup-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
