@@ -11,7 +11,7 @@ python3 -m pip install -r requirements.txt
 > [!NOTE]
 > On Windows, and on certain other platforms, you may need to use `python` instead of `python3`.
 
-> [!WARNING]
+> [!IMPORTANT]
 > If you're getting an error about a **externally managed environment**, you need to run the script from a *virtual environment*. Click [here](#-setup-with-a-virtual-environment) for instructions.
 
 ## 🏆 Usage
