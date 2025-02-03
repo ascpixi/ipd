@@ -1,9 +1,6 @@
 # Hack Club Iterated Prisoner's Dillema (IPD) runner
 This repository contains a collection of scripts to run Iterated Prisoner's Dillema competitions.
 
-> [!WARNING]
-> When running solutions from foreign sources, *always* verify that they're safe beforehand. This only concerns tournament organizers.
-
 ## ✨ Setup
 Run the following commands in a terminal **once** in order to get yourself started. Make sure to run them from the directory where you cloned the repository!
 
@@ -26,6 +23,9 @@ python3 ./src/run.py
 ```
 
 This will create a `results.json` file in the directory you're currently in. In order to view it, open the `index.html` file in `src/viewer`, or, alternatively, simply [click here](https://ascpixi.dev/ipd).
+
+> [!WARNING]
+> When running solutions from foreign sources, *always* verify that they're safe beforehand. This only concerns tournament organizers.
 
 ## 🧑‍💻 Writing strategies
 A template for a strategy is as follows:
