@@ -165,6 +165,7 @@ input[type="checkbox"]:checked::before {
 .matchup > .rows > div > div {
     display: table-cell;
     padding-right: 1em;
+    text-wrap: nowrap;
 }
 
 .matchup > .rows .history {
