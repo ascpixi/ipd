@@ -158,14 +158,16 @@ for iteration in range(REPEATS):
                 time_end = time.perf_counter()
 
                 if (time_end - time_start) > MAX_MOVE_TIME:
-                    print(f"(warn)   {instance.name} disqualified (timed out, took {(time_end - time_start) * 1000:.2f}ms)")
+                    instance_name = s1.name if instance == s1_instance else s2.name
+                    print(f"(warn)   {instance_name} disqualified (timed out, took {(time_end - time_start) * 1000:.2f}ms)")
                     disqualified.append(instance)
                     return (None, True)
                 
                 return (choice, False)
 
             except Exception as ex:
-                print(f"(warn)   {instance.name} disqualified (raised exception, {ex})")
+                instance_name = s1.name if instance == s1_instance else s2.name
+                print(f"(warn)   {instance_name} disqualified (raised exception, {ex})")
                 disqualified.append(instance)
 
                 if not args.ignore_errors:
