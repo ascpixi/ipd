@@ -24,6 +24,11 @@ python3 ./src/run.py
 
 This will create a `results.json` file in the directory you're currently in. In order to view it, open the `index.html` file in `src/viewer`, or, alternatively, simply [click here](https://ascpixi.dev/ipd).
 
+You can also view all available flags with `--help`. Some of the more interesting ones include:
+- `-s`/`--solution-dir`: the directory to read solution scripts from. **(Default: `./solutions`)**
+- `--no-log`: don't log individual match results - useful with a high number of `--iterations`
+- `-i`/`--iterations`: the number of times we will re-run matchups to reduce effects of randomness. A higher number will yield a more accurate result at the cost of increased execution time. **(Default: 20)**
+
 > [!WARNING]
 > When running solutions from foreign sources, *always* verify that they're safe beforehand. This only concerns tournament organizers.
 
