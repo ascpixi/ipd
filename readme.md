@@ -44,8 +44,8 @@ class Strategy:
 
     def move(self, self_history: list[bool], opponent_history: list[bool]):
         # Return "True" to cooperate, and "False" to defect.
-        #     self_history is the history of the moves of this strategy.
-        #     opponent_history is the history of the moves of the opponent.
+        #     - self_history is the history of the moves of this strategy.
+        #     - opponent_history is the history of the moves of the opponent.
         #     Both lists are guaranteed to be of equal length.
         return True
 ```
