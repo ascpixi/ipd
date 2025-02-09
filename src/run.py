@@ -151,24 +151,22 @@ for iteration in range(REPEATS):
 
         match_terminated = False
 
-        def make_move(instance: SolutionImpl, self_history: list[bool], opponent_history: list[bool]) -> tuple[bool, bool]:
+        def make_move(solution: Solution, instance: SolutionImpl, self_history: list[bool], opponent_history: list[bool]) -> tuple[bool, bool]:
             try:
                 time_start = time.perf_counter()
                 choice = bool(instance.move(self_history, opponent_history))
                 time_end = time.perf_counter()
 
                 if (time_end - time_start) > MAX_MOVE_TIME:
-                    instance_name = s1.name if instance == s1_instance else s2.name
-                    print(f"(warn)   {instance_name} disqualified (timed out, took {(time_end - time_start) * 1000:.2f}ms)")
-                    disqualified.append(instance)
+                    print(f"(warn)   {solution.name} disqualified (timed out, took {(time_end - time_start) * 1000:.2f}ms)")
+                    disqualified.append(solution)
                     return (None, True)
                 
                 return (choice, False)
 
             except Exception as ex:
-                instance_name = s1.name if instance == s1_instance else s2.name
-                print(f"(warn)   {instance_name} disqualified (raised exception, {ex})")
-                disqualified.append(instance)
+                print(f"(warn)   {solution.name} disqualified (raised exception, {ex})")
+                disqualified.append(solution)
 
                 if not args.ignore_errors:
                     raise
@@ -176,12 +174,12 @@ for iteration in range(REPEATS):
                 return (None, True)
 
         for i in range(n):
-            (s1_choice, s1_dq) = make_move(s1_instance, s1_history, s2_history)
+            (s1_choice, s1_dq) = make_move(s1, s1_instance, s1_history, s2_history)
             if s1_dq:
                 match_terminated = True
                 break
 
-            (s2_choice, s2_dq) = make_move(s2_instance, s2_history, s1_history)
+            (s2_choice, s2_dq) = make_move(s2, s2_instance, s2_history, s1_history)
             if s2_dq:
                 match_terminated = True
                 break
