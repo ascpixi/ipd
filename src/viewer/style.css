@@ -26,9 +26,14 @@ header {
     background: #181825;
     padding: 1em 2em;
     font-weight: bold;
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+header div {
     gap: 16px;
     display: flex;
+    align-items: center;
 }
 
 header img {

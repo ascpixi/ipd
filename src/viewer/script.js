@@ -1,5 +1,5 @@
 // @ts-check
-(() => {
+(async () => {
     "use strict";
 
     /**
@@ -12,7 +12,9 @@
         // A defects        // A cooperates
         [ [1, 1],           [0, 5]         ],  // B defects
         [ [5, 0],           [3, 3]         ]   // B cooperates
-    ]
+    ];
+
+    const KNOWN_TOURNAMENTS_BASE = "https://raw.githubusercontent.com/ascpixi/ipd-hackclub-results/refs/heads/master";
 
     /**
      * @param {string} selector
@@ -40,7 +42,10 @@
         matchupList: qs("#matchup-list"),
 
         /** @type {HTMLButtonElement} */
-        btnOpenResults: qs("#btn-open-results")
+        btnOpenResults: qs("#btn-open-results"),
+
+        /** @type {HTMLSelectElement} */
+        knownTournaments: qs("#known-tournaments")
     };
 
     /** @type {Tournament | null} */
@@ -205,6 +210,10 @@
                         console.log("ev.target.result was of an invalid type:", text);
                         throw new Error("Invalid file object type.")
                     }
+
+                    if (elements.knownTournaments) {
+                        elements.knownTournaments.selectedIndex = 0;
+                    }
     
                     loadResults(JSON.parse(text));
                 } catch (err) {
@@ -231,4 +240,61 @@
 
         updateMatchups();
     });
+
+    try {
+        const knownReq = await fetch(`${KNOWN_TOURNAMENTS_BASE}/index.json`);
+        if (!knownReq.ok) {
+            console.warn("Fetch failed.", knownReq);
+            throw new Error("Could not fetch index.json.");
+        }
+
+        /** @type {{ name: string, file: string }[]} */
+        const known = await knownReq.json();
+
+        elements.knownTournaments.add(Object.assign(document.createElement("option"), {
+            innerText: "(none)",
+            disabled: true
+        }));
+
+        for (const item of known) {
+            const option = document.createElement("option");
+            option.dataset.file = item.file;
+            option.innerText = item.name;
+
+            elements.knownTournaments.options.add(option);
+        }
+
+        elements.knownTournaments.selectedIndex = 0;
+
+        /** @type {{ [file: string]: Tournament }} */
+        const knownCache = {};
+
+        elements.knownTournaments.disabled = false;
+        elements.knownTournaments.addEventListener("change", async () => {
+            const selected = elements.knownTournaments.selectedOptions[0];
+            const file = selected.dataset.file;
+            if (!file)
+                return;
+
+            if (file in knownCache) {
+                loadResults(knownCache[file]);
+                return;
+            }
+
+            const req = await fetch(`${KNOWN_TOURNAMENTS_BASE}/${file}`);
+            if (!req.ok) {
+                console.error(`Couldn't load tournament @ ${file}!`, req);
+                alert(`Sorry, we couldn't load that tournament! ${req.status} ${req.statusText}`);
+            }
+
+            /** @type {Tournament} */
+            const tournament = await req.json();
+
+            knownCache[file] = tournament;
+            loadResults(tournament);
+        });
+    } catch (err) {
+        console.warn("Could not load known tournament results: ", err);
+        elements.knownTournaments.remove();
+    }
 })();
