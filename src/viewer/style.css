@@ -77,11 +77,11 @@ button, select {
     font-weight: 500;
     cursor: pointer;
 
-    & :hover {
+    &:hover {
         background: #262735;
     }
 
-    & :active {
+    &:active {
         background: #1b1c25;
     }
 }
@@ -100,11 +100,11 @@ input[type="checkbox"] {
     box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .05) inset;
     margin: 0;
 
-    & :hover {
+    &:hover {
         background: #262735;
     }
 
-    & :checked::before {
+    &:checked::before {
         content: "";
         width: 12px;
         height: 12px;
