@@ -76,6 +76,7 @@ button, select {
     box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .05) inset;
     font-weight: 500;
     cursor: pointer;
+    text-wrap: nowrap;
 
     &:hover {
         background: #262735;
@@ -238,5 +239,17 @@ input[type="checkbox"] {
 
     main section {
         width: 100% !important;
+    }
+}
+
+@media (max-width: 850px) {
+    header > div > span {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    header select {
+        width: 30vw;
     }
 }
