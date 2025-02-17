@@ -28,16 +28,16 @@ header {
     font-weight: bold;
     display: flex;
     justify-content: space-between;
-}
 
-header div {
-    gap: 16px;
-    display: flex;
-    align-items: center;
-}
+    & div {
+        gap: 16px;
+        display: flex;
+        align-items: center;
+    }
 
-header img {
-    height: 1.5em;
+    & img {
+        height: 1.5em;
+    }
 }
 
 main {
@@ -76,14 +76,14 @@ button, select {
     box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .05) inset;
     font-weight: 500;
     cursor: pointer;
-}
 
-button:hover, select:hover {
-    background: #262735;
-}
+    & :hover {
+        background: #262735;
+    }
 
-button:active {
-    background: #1b1c25;
+    & :active {
+        background: #1b1c25;
+    }
 }
 
 select {
@@ -99,22 +99,22 @@ input[type="checkbox"] {
     cursor: pointer;
     box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .05) inset;
     margin: 0;
-}
 
-input[type="checkbox"]:hover {
-    background: #262735;
-}
+    & :hover {
+        background: #262735;
+    }
 
-input[type="checkbox"]:checked::before {
-    content: "";
-    width: 12px;
-    height: 12px;
-    border-radius: 2px;
-    background: #cdd6f4;
-    display: block;
-    position: relative;
-    top: 3px;
-    left: 3px;
+    & :checked::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        background: #cdd6f4;
+        display: block;
+        position: relative;
+        top: 3px;
+        left: 3px;
+    }
 }
 
 #leaderboard {
@@ -133,12 +133,12 @@ input[type="checkbox"]:checked::before {
     justify-content: space-between;
     align-items: center;
     display: flex;
-}
 
-#matchup-header > div {
-    display: flex;
-    align-items: center;
-    gap: .5em;
+    & > div {
+        display: flex;
+        align-items: center;
+        gap: .5em;
+    }
 }
 
 #matchup-list {
@@ -152,52 +152,52 @@ input[type="checkbox"]:checked::before {
 .matchup {
     display: flex;
     flex-direction: column;
-}
 
-.matchup .header {
-    color: #767b9b;
-}
+    & .header {
+        color: #767b9b;
+    }
 
-.matchup > .rows {
-    display: table;
-    padding-left: 1em;
-}
+    & > .rows {
+        display: table;
+        padding-left: 1em;
 
-.matchup > .rows > div {
-    display: table-row;
-}
+        & > div {
+            display: table-row;
 
-.matchup > .rows > div > div {
-    display: table-cell;
-    padding-right: 1em;
-    text-wrap: nowrap;
-}
+            & > div {
+                display: table-cell;
+                padding-right: 1em;
+                text-wrap: nowrap;
+            }
+        }
 
-.matchup > .rows .history {
-    display: flex;
-    flex-direction: row;
-}
+        & .history {
+            display: flex;
+            flex-direction: row;
 
-.matchup > .rows .history > div {
-    width: 6px;
-    height: 1em;
-    box-shadow: 0 0 1px #000000;
-}
+            & > div {
+                width: 6px;
+                height: 1em;
+                box-shadow: 0 0 1px #000000;
+            }
 
-.matchup > .rows .history > .coop-lost {
-    background: #4e6138;
-}
+            & > .coop-lost {
+                background: #4e6138;
+            }
 
-.matchup > .rows .history > .coop-tie {
-    background: #a6e3a1;
-}
+            & > .coop-tie {
+                background: #a6e3a1;
+            }
 
-.matchup > .rows .history > .dfct-win {
-    background: #ebdaa0;
-}
+            & > .dfct-win {
+                background: #ebdaa0;
+            }   
 
-.matchup > .rows .history > .dfct-tie {
-    background: #f38ba8;
+            & > .dfct-tie {
+                background: #f38ba8;
+            }
+        }
+    }
 }
 
 *::-webkit-scrollbar {
