@@ -101,6 +101,11 @@
             elements.matchupFilter.options.add(option);
         }
 
+        if (Object.entries(results.leaderboard).length > 13) {
+            elements.shouldFilter.checked = true;
+            elements.matchupFilter.selectedIndex = 0;
+        }
+
         updateMatchups();
     }
 
