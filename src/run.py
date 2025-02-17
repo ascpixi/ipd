@@ -53,7 +53,7 @@ SCORE_MATRIX = [
 
 # The maximum amount of time that a move can take, in seconds. If a solution takes
 # more than this amount of time to resolve a single move, it is disqualified.
-MAX_MOVE_TIME = 10 / 1000 # 10ms
+MAX_MOVE_TIME = 20 / 1000 # 20ms
 
 # The number of times that we will re-run the matchups in order to reduce the effects
 # of randomness. The greater, the better, but will take longer to compute.
